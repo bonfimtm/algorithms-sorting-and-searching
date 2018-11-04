@@ -25,7 +25,7 @@ def get_index_of_lowest(items: list) -> int:
 
 def bogo_sort(items: list, verbose: bool=False) -> list:
 
-    sorted_items = [] + items
+    sorted_items = items.copy()
     attempts = 0
 
     while not is_sorted(sorted_items):
@@ -40,7 +40,7 @@ def bogo_sort(items: list, verbose: bool=False) -> list:
 
 def selection_sort(items: list, verbose: bool=False) -> list:
 
-    unsorted_items = [] + items
+    unsorted_items = items.copy()
     sorted_items = []
 
     if verbose:
