@@ -38,6 +38,23 @@ def bogo_sort(items: list, verbose: bool=False) -> list:
     return sorted_items
 
 
+def bubble_sort(items):
+    sorted_items = items.copy()
+    length = len(sorted_items)
+    num_swaps = 0
+    for j in range(length):
+        for i in range(length - 1):
+            if sorted_items[i] > sorted_items[i + 1]:
+                num_swaps += 1
+                temp = sorted_items[i]
+                sorted_items[i] = sorted_items[i + 1]
+                sorted_items[i + 1] = temp
+    print("Array is sorted in {} swaps.".format(num_swaps))
+    print("First Element: {}".format(sorted_items[0]))
+    print("Last Element: {}".format(sorted_items[-1]))
+    return sorted_items
+
+
 def selection_sort(items: list, verbose: bool=False) -> list:
 
     unsorted_items = items.copy()
@@ -125,6 +142,16 @@ class SortSpec(unittest.TestCase):
         print('u', unsorted_items)
 
         sorted_items = bogo_sort(unsorted_items)
+        print('s', sorted_items)
+
+        self.assertTrue(sorted(unsorted_items) == sorted_items)
+
+    def test_bubble_sort(self):
+
+        unsorted_items = self.numbers_5
+        print('u', unsorted_items)
+
+        sorted_items = bubble_sort(unsorted_items)
         print('s', sorted_items)
 
         self.assertTrue(sorted(unsorted_items) == sorted_items)
